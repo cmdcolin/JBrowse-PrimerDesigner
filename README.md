@@ -1,25 +1,72 @@
-JBrowse-PrimerDesigner
-======================
+# JBrowse-PrimerDesigner
 
-About
------
+## About
+
 PrimerDesigner plugin for JBrowse
+
 Written by Nathan Liles (nml5566@gmail.com)
+
+Updated by Colin Diesh (colin.diesh@gmail.com) to work with newer versions of JBrowse in Jan 2019
+
 
 PrimerDesigner displays primers for a highlighted region's DNA sequence.
 
 This plugin is very alpha.
 
-Prerequisites
--------------
-# Bio::PrimerDesigner
+## Possible setup instructions
+
+Step 1: `sudo apt install libbio-primerdesigner-perl`
+
+Step 2: Download primer3 1.1.4 as noted in the README of the original JBrowse PrimerDesigner. This means downloading from sourceforge. It is probably possible to make it work with newer version but this should be ok https://sourceforge.net/projects/primer3/files/primer3/1.1.4/
+
+Step 3: `tar xf primer3-1.1.4.tar.gz` and then go to the src dir for primer3 and run `make`. Then manually copy primer3_core to the bin dir and name it primer3 e.g. `sudo cp primer3_core /usr/bin/primer3`. **This was especially important for my fork because the bin/primer-designer.pl was changed to remove configurability of the BINPATH due to errors I was receiving**
+
+Step 4: Possible modify your code in main.js to use a hardcoded url e.g. `var url = 'http://localhost/cgi-bin/bin/primer-designer.pl';` instead of `var url = this._makeURL('/bin/primer-designer.pl');` since I put the primer-designer in a different directory namely /usr/bin/cgi-bin which mapped to http://localhost/cgi-bin/bin/primer-designer.pl on my server
+
+
+Step 5: Create a tmp dir for the primer-designer.pl script, for me this was in /usr/bin/cgi-bin/tmp and made it writable or owned by apache user. If you don't know you can just make it world r/w e.g. chmod 777 just know that that's not security recommendation :)
+
+Step 6: I symlinked the tmp dir `ln -s /usr/lib/cgi-bin/tmp /var/www/html/tmp`
+
+Step 7: Re-run ./setup.sh to recompile the plugin
+
+## Notes
+
+As you can see, this was not easy. It is fairly tedious and error prone in fact. It probably makes sense to re-do it at some point but let me know if these instructions work
+
+
+## Screenshot
+
+![virtualbox_ubuntu5_20_01_2019_21_56_59](https://user-images.githubusercontent.com/6511937/51450327-58e22f80-1cfe-11e9-872c-6134eda2c934.png)
+
+
+## Tested on
+
+
+    primer3 1.1.4
+    Bio::PrimerDesigner installed via apt install libbio-primerdesigner-perl
+    perl 5.26
+    Ubuntu 18.10
+
+
+## Nathan's setup instructions
+
+My instructions above worked for me. You can also try Nathan Liles setup instructions below
+
+Compared with Nathan's setup instructions, the main different is
+
+- I use my /usr/lib/cgi-bin directory instead of inside the jbrowse directory
+- I install Bio::PrimerDesigner from apt
+
+### Prerequisites
+
 Bio::PrimerDesigner is a perl module frontend for primer3.
 It can be installed via CPAN:
 
     sudo cpan Bio::PrimerDesigner
 
-# primer3 (1.14 or older)
-This legacy requirement is due to Bio::PrimerDesigner, which currently isn't 
+##### primer3 (1.14 or older)
+This legacy requirement is due to Bio::PrimerDesigner, which currently isn't
 compatible with anything newer.
 
 The older versions can be found
@@ -30,9 +77,8 @@ need to change the BINPATH constant in PrimerDesigner/bin/primer-designer.pl
 to reflect that.
 
 
-Installation
-------------
-First copy the PrimerDesigner/ folder into your JBrowse plugins/ directory 
+### Installation
+First copy the PrimerDesigner/ folder into your JBrowse plugins/ directory
     cp -r PrimerDesigner/ /your/jbrowse/path/plugins
 
 Next, change permissions on a couple of paths so Apache can use them:
