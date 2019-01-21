@@ -26,7 +26,7 @@ if ( exists $ENV{GATEWAY_INTERFACE} ) {
     $end = param('end');
 
 } else {
-# Use to test command-line output 
+# Use to test command-line output
     $ref = "chrI";
     $dna = "CTTCATTTTTTTTTTGTTTTTCCCTTTTGTCTTTTGCACCGCTTATATATGGGTATGAAACAAGTT"
     . "CAAGAATTTATAATGGAACCCAAAGGTTCAGTCTTTGTAGTTCGAGCGACATTGCGCGTTTCCTTAGAAAAC"
@@ -80,10 +80,8 @@ sub design_primers {
 
     $attr{PRIMER_PRODUCT_SIZE_RANGE} ||= $size_range;
 
-
-    my $pcr = Bio::PrimerDesigner->new( 
-	program => BINARY,
-	method => METHOD );
+    ## Note: modified from the original, assumes primer3 exists as a binary in /usr/bin/primer3 not primer3_core
+    my $pcr = Bio::PrimerDesigner->new;
 
     $pcr or fatal_error(Bio::PrimerDesigner->error);
     my $binpath = BINPATH;
@@ -122,16 +120,16 @@ sub primer_results {
   # Give up if primer3 failed
   unless ($res->left) {
     $raw_output =~ s/([A-Z,_]+=)/<br>$1/g;
-    fatal_error("No primers found:$raw_output") 
+    fatal_error("No primers found:$raw_output")
   }
 
   my @attributes = qw/ left right startleft startright tmleft tmright
       qual lqual rqual leftgc rightgc lselfany lselfend rselfany rselfend/;
-  
+
   my ( @rows, @feats );
-  
+
   my $text = "This value should be less than 1 for best results but don\'t worry too much";
-  my $Primer_Pair_Quality = 'Primer_Pair_Quality '.a( { -href => "javascript:alert(\"$text\")" }, '[?]'); 
+  my $Primer_Pair_Quality = 'Primer_Pair_Quality '.a( { -href => "javascript:alert(\"$text\")" }, '[?]');
   my $spacer = td( {-width => 25}, '&nbsp;');
 
     my $bin_path = abs_path(dirname($0));
@@ -139,13 +137,13 @@ sub primer_results {
     my ($out, $filename, $tmpdir);
     eval {
     	$tmpdir = tempdir( DIR => "$plugin_path/tmp" );
-	($out, $filename) = tempfile( 
+	($out, $filename) = tempfile(
 	DIR => $tmpdir,
 	SUFFIX => '.gff3' );
     };
 
     fatal_error("$@") if ($@);
- 
+
     for my $n ( 1 .. $num ) {
 	my %r;
 	for (@attributes) {
@@ -183,10 +181,10 @@ sub primer_results {
 	my $table = table(
 	{ -style => "" },
 	[Tr(
-	    [ 
+	    [
 	    th(
 		{ -class => 'searchtitle', -align => 'left' },
-		[ 'Primer', "Sequence (5'->3')", 
+		[ 'Primer', "Sequence (5'->3')",
 		qw/Tm %GC Coord Quality Product/, $Primer_Pair_Quality ]
 	    ),
 	    td(
@@ -209,7 +207,7 @@ sub primer_results {
 
 	open(my $report_fh, ">>", "$tmpdir/report_$n.html") || die $!;
 	print $report_fh $table;
-	print $report_fh a( { -href => "raw_output.html" }, 
+	print $report_fh a( { -href => "raw_output.html" },
 	    'PRIMER3 raw output');
 	close($report_fh);
     }
@@ -225,11 +223,11 @@ JSON
     my $table = table(
 	{ -style => "" },
 	[ @rows,
-	Tr( td( { -colspan => 9, -class => 'searchtitle' }, 
+	Tr( td( { -colspan => 9, -class => 'searchtitle' },
 	    $raw_output)
 	    )
 	]
-	); 
+	);
     open(my $raw_fh, ">>", "$tmpdir/raw_output.html") || die $!;
     print $raw_fh $table;
     close($raw_fh);
@@ -242,7 +240,7 @@ sub fatal_error {
     my $msg = shift;
     #my $wrapstring = '';
     #while (length($msg)) {
-	#$wrapstring .= substr($msg, 0, 80, '')."\n"; 
+	#$wrapstring .= substr($msg, 0, 80, '')."\n";
     #}
     $msg = quotemeta($msg);
     print <<JSON;
@@ -255,7 +253,7 @@ JSON
 # contributed by Nathan Liles
 # Based on code by Russell Smithies
 # russell.smithies@agresearch.co.nz
-sub primer3_report { 
+sub primer3_report {
   my $sub_segment = shift;
   my $sub_res     = shift;
   my %sub_r       = %{ shift @_ };
