@@ -23,7 +23,7 @@ return declare( JBrowsePlugin,
     constructor: function( args ) {
         var that = this;
 
-	this.location = args.location;
+	this.location = args.location||'/tmp/';
 	this.GFF3Driver = GFF3Driver;
 	this.params = {
 	    user_set: false,
