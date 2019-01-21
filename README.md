@@ -23,12 +23,27 @@ Step 3: `tar xf primer3-1.1.4.tar.gz` and then go to the src dir for primer3 and
 
 Step 4: Possible modify your code in main.js to use a hardcoded url e.g. `var url = 'http://localhost/cgi-bin/bin/primer-designer.pl';` instead of `var url = this._makeURL('/bin/primer-designer.pl');` since I put the primer-designer in a different directory namely /usr/bin/cgi-bin which mapped to http://localhost/cgi-bin/bin/primer-designer.pl on my server
 
+Step 5: Copy the PrimerDesigner/ directory to the JBrowse plugins directory and add it to the config, see http://jbrowse.org/docs/plugins.html#installing-plugins for example
 
-Step 5: Create a tmp dir for the primer-designer.pl script, for me this was in /usr/bin/cgi-bin/tmp and made it writable or owned by apache user. If you don't know you can just make it world r/w e.g. chmod 777 just know that that's not security recommendation :)
+Step 6: Enable CGI on apache, I did this by adding the following to the top of /etc/apache2/sites-enabled/000-default.conf
 
-Step 6: I symlinked the tmp dir `ln -s /usr/lib/cgi-bin/tmp /var/www/html/tmp`
+```
+ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+<Directory "/usr/lib/cgi-bin">
+AllowOverride None
+Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+Order allow,deny
+Allow from all
+</Directory>
+```
 
-Step 7: Re-run ./setup.sh to recompile the plugin
+Step 7: Copy the PrimerDesigner/bin/primer-designer.pl to /usr/lib/cgi-bin/bin/primer-designer.pl, this is the cgi-bin on my apache installation
+
+Step 8: Create a tmp dir for the primer-designer.pl script, for me this was in /usr/bin/cgi-bin/tmp and made it writable or owned by apache user. If you don't know you can just make it world r/w e.g. chmod 777 just know that that's not security recommendation :)
+
+Step 9: I symlinked the tmp dir `ln -s /usr/lib/cgi-bin/tmp /var/www/html/tmp`
+
+Step 10: Re-run ./setup.sh to recompile the plugin
 
 ## Notes
 
