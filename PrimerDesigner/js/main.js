@@ -76,7 +76,7 @@ return declare( JBrowsePlugin,
 	    }
 	    this.params.PRIMER_PRODUCT_SIZE_RANGE = x[0]+'-'+x[1];
 
-	} 
+	}
     },
     addMenu: function () {
     	var that = this;
@@ -123,82 +123,82 @@ return declare( JBrowsePlugin,
 	var row1 = dojo.create("tr", null, table);
 
 	var r1c1 = dojo.create("td", null, row1);
-	dojo.create("a", { href: help+"PRIMER_SIZE", 
-	    name: "PRIMER_OPT_SIZE_INPUT", 
+	dojo.create("a", { href: help+"PRIMER_SIZE",
+	    name: "PRIMER_OPT_SIZE_INPUT",
 	    innerHTML: "<b>Primer Size</b>" }, r1c1);
 
 	var r1c2 = dojo.create("td", null, row1);
 	var r1c2txt = dojo.create("span", { innerHTML: "Min. " }, r1c2);
-	dojo.create("input", { type: "text", name: "PRIMER_MIN_SIZE", 
+	dojo.create("input", { type: "text", name: "PRIMER_MIN_SIZE",
 	    value: p.PRIMER_MIN_SIZE, size: "4" }, r1c2txt);
 	dojo.create("span", { innerHTML: " Opt. " }, r1c2txt);
-	dojo.create("input", { type: "text", name: "PRIMER_OPT_SIZE", 
+	dojo.create("input", { type: "text", name: "PRIMER_OPT_SIZE",
 	    value: p.PRIMER_OPT_SIZE, size: "4" }, r1c2txt);
 	dojo.create("span", { innerHTML: " Max. " }, r1c2txt);
-	dojo.create("input", { type: "text", name: "PRIMER_MAX_SIZE", 
+	dojo.create("input", { type: "text", name: "PRIMER_MAX_SIZE",
 	    value: p.PRIMER_MAX_SIZE, size: "4" }, r1c2txt);
 
 	var r1c3 = dojo.create("td", null, row1);
-	dojo.create("a", { href: help+"PRIMER_PAIR_MAX_MISPRIMING", 
-	    name: "PRIMER_PAIR_MAX_MISPRIMING_INPUT", 
+	dojo.create("a", { href: help+"PRIMER_PAIR_MAX_MISPRIMING",
+	    name: "PRIMER_PAIR_MAX_MISPRIMING_INPUT",
 	    innerHTML: "<b>Pair Max Mispriming:</b>", target: "_new" }, r1c3);
 
 	var r1c4 = dojo.create("td", null, row1);
 	dojo.create("input", { type: "text", size: "4",
-	    value: p.PRIMER_PAIR_MAX_MISPRIMING, 
+	    value: p.PRIMER_PAIR_MAX_MISPRIMING,
 	    name: "PRIMER_PAIR_MAX_MISPRIMING"
 	    }, r1c4);
 
 	var row2 = dojo.create("tr", null, table);
 
 	var r2c1 = dojo.create("td", null, row2);
-	dojo.create("a", { href: help+"PRIMER_GC_PERCENT", 
-	    name: "PRIMER_GC_PERCENT_INPUT", 
+	dojo.create("a", { href: help+"PRIMER_GC_PERCENT",
+	    name: "PRIMER_GC_PERCENT_INPUT",
 	    innerHTML: "<b>Primer GC%</b>", target: "_new" }, r2c1);
 	var r2c2 = dojo.create("td", null, row2);
 	var r2c2txt = dojo.create("span", { innerHTML: "Min. " }, r2c2);
-	dojo.create("input", { type: "text", name: "PRIMER_MIN_GC", 
+	dojo.create("input", { type: "text", name: "PRIMER_MIN_GC",
 	    value: p.PRIMER_MIN_GC, size: "4" }, r2c2txt);
 	dojo.create("span", { innerHTML: " Opt. " }, r2c2txt);
-	dojo.create("input", { type: "text", name: "PRIMER_OPT_GC_PERCENT", 
+	dojo.create("input", { type: "text", name: "PRIMER_OPT_GC_PERCENT",
 	    value: p.PRIMER_OPT_GC_PERCENT, size: "4" }, r2c2txt);
 	dojo.create("span", { innerHTML: " Max. " }, r2c2txt);
-	dojo.create("input", { type: "text", name: "PRIMER_MAX_GC", 
+	dojo.create("input", { type: "text", name: "PRIMER_MAX_GC",
 	    value: p.PRIMER_MAX_GC, size: "4" }, r2c2txt);
 
 	var r2c2 = dojo.create("td", null, row2);
 	dojo.create("a", { target: "_new",
-	    href: help+"PRIMER_MAX_END_STABILITY", 
+	    href: help+"PRIMER_MAX_END_STABILITY",
 	    name: "PRIMER_MAX_END_STABILITY_INPUT",
 	    innerHTML: "<b>Max 3&prime; Stability:</b>" }, r2c2);
 	var r2c3 = dojo.create("td", null, row2);
-	dojo.create("input", { type: "text", name: "PRIMER_MAX_END_STABILITY", 
+	dojo.create("input", { type: "text", name: "PRIMER_MAX_END_STABILITY",
 	    value: p.PRIMER_MAX_END_STABILITY, size: "4" }, r2c3);
 
 	var row3 = dojo.create("tr", null, table);
 
 	var r3c1 = dojo.create("td", null, row3);
-	dojo.create("a", { href: help+"PRIMER_TM", 
-	    name: "PRIMER_OPT_TM_INPUT", 
+	dojo.create("a", { href: help+"PRIMER_TM",
+	    name: "PRIMER_OPT_TM_INPUT",
 	    innerHTML: "<b>Primer Tm</b>", target: "_new" }, r3c1);
 	var r3c2 = dojo.create("td", null, row3);
 	var r3c2txt = dojo.create("span", { innerHTML: "Min. " }, r3c2);
-	dojo.create("input", { type: "text", name: "PRIMER_MIN_TM", 
+	dojo.create("input", { type: "text", name: "PRIMER_MIN_TM",
 	    value: p.PRIMER_MIN_TM, size: "4" }, r3c2txt);
 	dojo.create("span", { innerHTML: " Opt. " }, r3c2txt);
-	dojo.create("input", { type: "text", name: "PRIMER_OPT_TM", 
+	dojo.create("input", { type: "text", name: "PRIMER_OPT_TM",
 	    value: p.PRIMER_OPT_TM, size: "4" }, r3c2txt);
 	dojo.create("span", { innerHTML: " Max. " }, r3c2txt);
-	dojo.create("input", { type: "text", name: "PRIMER_MAX_TM", 
+	dojo.create("input", { type: "text", name: "PRIMER_MAX_TM",
 	    value: p.PRIMER_MAX_TM, size: "4" }, r3c2txt);
 
 	var r3c2 = dojo.create("td", null, row3);
 	dojo.create("a", { target: "_new",
-	    href: help+"PRIMER_MAX_END_STABILITY", 
+	    href: help+"PRIMER_MAX_END_STABILITY",
 	    name: "PRIMER_MAX_END_STABILITY_INPUT",
 	    innerHTML: "<b>Max Self Complementarity:</b>" }, r3c2);
 	var r3c3 = dojo.create("td", null, row3);
-	dojo.create("input", { type: "text", name: "PRIMER_SELF_ANY", 
+	dojo.create("input", { type: "text", name: "PRIMER_SELF_ANY",
 	    value: p.PRIMER_SELF_ANY, size: "4" }, r3c3);
 
 	var row4 = dojo.create("tr", null, table);
@@ -206,12 +206,12 @@ return declare( JBrowsePlugin,
 	var r4c1 = dojo.create("td", null, row4);
 	dojo.create("a", { href: "javascript:void(0)",
 	    onclick: "alert(\'Format xxx-xxx\nBy default, the smallest product size to flank the feature will be selected\nUse this option to force a particular amplicon size and.or reduce computation time\')",
-	    name: "PRIMER_PRODUCT_SIZE_RANGE", 
+	    name: "PRIMER_PRODUCT_SIZE_RANGE",
 	    innerHTML: "<b>Primer size range:</b>" }, r4c1);
 	var r4c2 = dojo.create("td", null, row4);
 
 	dojo.create("input", { type: "text", id: "product_size_range",
-	    name: "PRIMER_PRODUCT_SIZE_RANGE", 
+	    name: "PRIMER_PRODUCT_SIZE_RANGE",
 	    value: p.PRIMER_PRODUCT_SIZE_RANGE, size: "8" }, r4c2);
 
 	var r4c3 = dojo.create("td", null, row4);
@@ -220,7 +220,7 @@ return declare( JBrowsePlugin,
 	    name: "PRIMER_SELF_END_INPUT", target: "_new" }, r4c3);
 
 	var r4c4 = dojo.create("td", null, row4);
-	dojo.create("input", { type: "text", 
+	dojo.create("input", { type: "text",
 	    name: "PRIMER_SELF_END",
 	    value: p.PRIMER_SELF_END, size: "4" }, r4c4);
 
@@ -231,8 +231,8 @@ return declare( JBrowsePlugin,
 	    name: "PRIMER_NUM_RETURN_INPUT", target: "_new",
 	    innerHTML: "<b>Primer sets:</b>" }, r5c1);
 	var r5c2 = dojo.create("td", null, row5);
-	dojo.create("input", { type: "text", 
-	    name: "PRIMER_NUM_RETURN", 
+	dojo.create("input", { type: "text",
+	    name: "PRIMER_NUM_RETURN",
 	    value: p.PRIMER_NUM_RETURN, size: "4" }, r5c2);
 
 	var r5c2 = dojo.create("td", null, row5);
@@ -240,8 +240,8 @@ return declare( JBrowsePlugin,
 	    name: "PRIMER_MAX_POLY_X_INPUT", target: "_new",
 	    innerHTML: "<b>Max Poly-X:</b>" }, r5c2);
 	var r5c3 = dojo.create("td", null, row5);
-	dojo.create("input", { type: "text", 
-	    name: "PRIMER_MAX_POLY_X", 
+	dojo.create("input", { type: "text",
+	    name: "PRIMER_MAX_POLY_X",
 	    value: p.PRIMER_MAX_POLY_X, size: "4" }, r5c3);
 
 	var settingsPane = new dijitDialog({
@@ -270,17 +270,17 @@ return declare( JBrowsePlugin,
     getParams: function () {
     //fetch all intputs with name="PRIMER_*" pattern
 	var el, attr, i, j, arr = [],
-	reg = new RegExp('^PRIMER_', 'i'),                
-	els = document.body.getElementsByTagName('*'); 
+	reg = new RegExp('^PRIMER_', 'i'),
+	els = document.body.getElementsByTagName('*');
 
-	for (i = 0; i < els.length; i++) {                 
-	    el = els[i]                                   
-	    attr = el.attributes;                        
+	for (i = 0; i < els.length; i++) {
+	    el = els[i]
+	    attr = el.attributes;
 	    if (el.tagName == 'INPUT') {
-		search: for (j = 0; j < attr.length; j++) {     
-		    if (attr[j].name == 'name' && reg.test(attr[j].value)) {              
-			arr.push(el);                          
-			break search;                          
+		search: for (j = 0; j < attr.length; j++) {
+		    if (attr[j].name == 'name' && reg.test(attr[j].value)) {
+			arr.push(el);
+			break search;
 		    }
 		}
 	    }
@@ -288,7 +288,7 @@ return declare( JBrowsePlugin,
 	return arr;
     },
     _makeStoreConfs: function (data) {
-	
+
     	var url = this.location+'/'+data.gff;
     	var resource = { url: url, type: 'gff3' };
     	var driver = new this.GFF3Driver();
@@ -314,8 +314,6 @@ return declare( JBrowsePlugin,
 	}
 
 	browser.loadRefSeqs().then( function () {
-	    browser.getRefSeq(hl.ref, function (ref) {
-
 		browser.getStore('refseqs', function (store) {
 
 		    var region = {
@@ -337,14 +335,13 @@ return declare( JBrowsePlugin,
 			console.error(error, error.stack);
 		    });
 		});
-	    })
 	});
     },
     _designPrimers: function (f) {
-
+    f = f.data;
 	var url = this._makeURL('/bin/primer-designer.pl');
 	var that = this;
-	var content = {start: f.start, end: f.end, ref: f.seq_id, seq: f.seq};
+	var content = {start: f.start, end: f.end, ref: f.seq_id, seq: f.residues};
 	var params = this.params;
 	for (var p in params) {
 	    content[p] = params[p];
@@ -382,16 +379,16 @@ return declare( JBrowsePlugin,
 	    key: "Primers for "+f.seq_id+':'+f.start+'..'+f.end,
 	    label: data.dir, /* unique label */
 	    store: this._makeStoreConfs(data),
-	    style: { 
+	    style: {
 		className: "primerfeature",
-		label: function(feature) { 
+		label: function(feature) {
 		    return 'PCR primer set '+feature.get('id')
 		    +' <span style="color:blue">(click for report)</span>';
 		},
-		labelScale: "0" 
+		labelScale: "0"
 	    },
-   	    onClick: {   
-		"label": "PRIMER3-style report for set {name}", 
+   	    onClick: {
+		"label": "PRIMER3-style report for set {name}",
 		"url": this.location+"/"+data.dir+"/report_{name}.html"
 	    },
 	    type: "PrimerDesigner/View/Track/Features"
@@ -401,7 +398,7 @@ return declare( JBrowsePlugin,
 	    var storeConf = conf.store;
 	    if( storeConf && typeof storeConf == 'object' ) {
 		delete conf.store;
-		var name = this._addStoreConfig( storeConf.name, storeConf );
+		var name = this.addStoreConfig( storeConf.name, storeConf );
 		conf.store = name;
 	    }
 	},this.browser);
