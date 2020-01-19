@@ -8,10 +8,15 @@ Written by Nathan Liles (nml5566@gmail.com)
 
 Updated by Colin Diesh (colin.diesh@gmail.com) to work with newer versions of JBrowse in Jan 2019
 
-
 PrimerDesigner displays primers for a highlighted region's DNA sequence.
 
 This plugin is very alpha.
+
+## Screenshot
+
+![](img/t1.png)
+
+
 ## Note
 
 This includes several small changes that are important compared to the original fork, if you'd like to see the changes see https://github.com/nml5566/JBrowse-PrimerDesigner/compare/nml5566:master...cmdcolin:master?w=1
